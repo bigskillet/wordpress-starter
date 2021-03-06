@@ -6,11 +6,11 @@
 function get_asset_path( $filename ) {
   static $manifest = null;
   if ( null === $manifest ) {
-    $path = get_stylesheet_directory() . '/dist/manifest.json';
+    $path = get_stylesheet_directory() . '/assets/manifest.json';
     $manifest = file_exists( $path ) ? json_decode( file_get_contents( $path ), true ) : [];
   }
   if ( array_key_exists( $filename, $manifest ) ) {
-    return '/dist' . $manifest[ $filename ];
+    return '/assets' . $manifest[ $filename ];
   }
   return $filename;
 }
