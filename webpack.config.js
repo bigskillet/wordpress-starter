@@ -40,7 +40,15 @@ module.exports = {
         'src/**/*',
         '**/*.php'
       ],
-      notify: false
+      notify: false,
+      snippetOptions: {
+        rule: {
+          match: /<\/body>/i,
+          fn: (snippet, match) => {
+            return snippet + match;
+          }
+        }
+      }
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
