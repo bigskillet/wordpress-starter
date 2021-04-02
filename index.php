@@ -1,5 +1,3 @@
 <?php get_header(); ?>
-    <main class="flex-grow">
-      Wordpress Starter
-    </main>
+  <h1>Wordpress Starter</h1>
 <?php get_footer(); ?>
