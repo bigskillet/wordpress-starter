@@ -29,6 +29,14 @@ module.exports = {
           'postcss-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(svg|png|jpg|woff2)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '[name][ext]',
+          publicPath: '/wp-content/themes/wordpress-starter/assets/'
+        }
       }
     ]
   },
