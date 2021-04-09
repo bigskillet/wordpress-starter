@@ -5,12 +5,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const TerserPlugin = require('terser-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    main: './src/scripts/main.js'
+    main: './src/scripts/main.js',
+    editor: './src/styles/editor.scss'
   },
   output: {
     path: path.resolve(__dirname, 'assets'),
@@ -79,6 +81,7 @@ module.exports = {
         ? '[name].[contenthash:8].css'
         : '[name].css'
     }),
+    new RemoveEmptyScriptsPlugin(),
     new WebpackManifestPlugin({
       map: f => ({ ...f, name: f.path.replace(/.[a-f0-9]{8}/, '') })
     })
