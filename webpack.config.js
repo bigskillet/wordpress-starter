@@ -5,13 +5,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
     main: './src/scripts/main.js',
-    editor: './src/styles/editor.scss'
+    editor: './src/scripts/editor.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -76,8 +75,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
-    }),
-    new RemoveEmptyScriptsPlugin()
+    })
   ],
   optimization: {
     splitChunks: {
