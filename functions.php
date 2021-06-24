@@ -3,8 +3,8 @@
  * Enqueue Assets
  */
 add_action( 'wp_enqueue_scripts', function() {
-  wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/main.js', [], filemtime( get_template_directory() . '/assets/main.js' ), true );
-  wp_enqueue_style( 'styles', get_template_directory_uri() . '/assets/main.css', [], filemtime( get_template_directory() . '/assets/main.css' ) );
+  wp_enqueue_script( 'scripts', get_template_directory_uri() . '/dist/main.js', [], filemtime( get_template_directory() . '/dist/main.js' ), true );
+  wp_enqueue_style( 'styles', get_template_directory_uri() . '/dist/main.css', [], filemtime( get_template_directory() . '/dist/main.css' ) );
 });
 
 /**
@@ -12,7 +12,7 @@ add_action( 'wp_enqueue_scripts', function() {
  */
 add_action( 'after_setup_theme', function() {
   add_theme_support( 'editor-styles' );
-	add_editor_style( get_template_directory_uri() . '/assets/editor.css' );
+	add_editor_style( get_template_directory_uri() . '/dist/editor.css' );
   add_theme_support( 'title-tag' );
   add_theme_support( 'post-thumbnails' );
 });

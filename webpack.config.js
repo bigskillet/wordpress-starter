@@ -14,7 +14,7 @@ module.exports = {
     editor: './src/styles/editor.scss'
   },
   output: {
-    path: path.resolve(__dirname, 'assets'),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     publicPath: '/'
   },
