@@ -7,7 +7,6 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const TerserPlugin = require('terser-webpack-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
@@ -16,9 +15,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'assets'),
-    filename: process.env.NODE_ENV == 'production'
-      ? '[name].[contenthash:8].js'
-      : '[name].js',
+    filename: '[name].js',
     publicPath: '/'
   },
   module: {
@@ -78,14 +75,9 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: process.env.NODE_ENV == 'production'
-        ? '[name].[contenthash:8].css'
-        : '[name].css'
+      filename: '[name].css'
     }),
-    new RemoveEmptyScriptsPlugin(),
-    new WebpackManifestPlugin({
-      map: f => ({ ...f, name: f.path.replace(/.[a-f0-9]{8}/, '') })
-    })
+    new RemoveEmptyScriptsPlugin()
   ],
   optimization: {
     splitChunks: {
