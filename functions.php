@@ -3,18 +3,18 @@
  * Enqueue Assets
  */
 add_action( 'wp_enqueue_scripts', function() {
-  wp_enqueue_script( 'main-scripts', get_template_directory_uri() . '/dist/main.js', [], filemtime( get_template_directory() . '/dist/main.js' ), true );
-  wp_enqueue_style( 'main-styles', get_template_directory_uri() . '/dist/main.css', [], filemtime( get_template_directory() . '/dist/main.css' ) );
+  wp_enqueue_script( 'main', get_template_directory_uri() . '/dist/main.js', [], filemtime( get_template_directory() . '/dist/main.js' ), true );
+  wp_enqueue_style( 'main', get_template_directory_uri() . '/dist/main.css', [], filemtime( get_template_directory() . '/dist/main.css' ) );
 });
 
 /**
  * Gutenberg Assets
  */
 add_action( 'enqueue_block_editor_assets', function() {
-  wp_enqueue_script('editor-scripts', get_template_directory_uri() . '/dist/editor.js', [ 'wp-blocks', 'wp-dom' ], filemtime( get_template_directory() . '/dist/editor.js' ), true );
+  wp_enqueue_script( 'gutenberg', get_template_directory_uri() . '/dist/editor.js', [ 'wp-blocks', 'wp-dom' ], filemtime( get_template_directory() . '/dist/editor.js' ), true );
   
   // Full Screen False 
-  $script = "window.onload = function() { const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' ); if ( isFullscreenMode ) { wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' ); } }";
+  $script = 'window.onload = function() { const isFullscreenMode = wp.data.select( "core/edit-post" ).isFeatureActive( "fullscreenMode" ); if ( isFullscreenMode ) { wp.data.dispatch( "core/edit-post" ).toggleFeature( "fullscreenMode" ); } }';
 	wp_add_inline_script( 'wp-blocks', $script );
 });
 
