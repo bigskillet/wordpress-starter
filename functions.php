@@ -12,6 +12,10 @@ add_action( 'wp_enqueue_scripts', function() {
  */
 add_action( 'enqueue_block_editor_assets', function() {
   wp_enqueue_script('editor-scripts', get_template_directory_uri() . '/dist/editor.js', [ 'wp-blocks', 'wp-dom' ], filemtime( get_template_directory() . '/dist/editor.js' ), true );
+  
+  // Full Screen False 
+  $script = "window.onload = function() { const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' ); if ( isFullscreenMode ) { wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' ); } }";
+	wp_add_inline_script( 'wp-blocks', $script );
 });
 
 /**
@@ -36,6 +40,9 @@ add_action( 'after_setup_theme', function() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
   add_theme_support( 'post-thumbnails' );
+
+  // Gutenberg
+  remove_theme_support( 'core-block-patterns' );
 });
 
 /**
