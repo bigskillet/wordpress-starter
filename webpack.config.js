@@ -42,7 +42,8 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: process.env.NODE_ENV == 'development'
+    ? 'source-map' : false,
   plugins: [
     new BrowserSyncPlugin({
       proxy: 'http://wordpress-starter.valet',
