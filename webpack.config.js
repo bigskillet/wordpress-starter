@@ -33,7 +33,7 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: '[name][ext]',
-          publicPath: '/wp-content/themes/wordpress-starter/assets/'
+          publicPath: '/wp-content/themes/wordpress-starter/dist/'
         }
       }
     ]
