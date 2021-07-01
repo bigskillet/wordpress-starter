@@ -49,7 +49,7 @@ add_action( 'after_setup_theme', function() {
  * Admin, Login Favicon
  */
 function favicon() {
-  echo '<link rel="icon" href="' . get_template_directory_uri() . '/favicon.ico" />';
+  echo '<link rel="icon" href="' . get_template_directory_uri() . '/dist/favicon.ico" />';
 }
 add_action( 'admin_head', 'favicon' );
 add_action( 'login_head', 'favicon' );
