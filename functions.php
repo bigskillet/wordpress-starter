@@ -41,12 +41,3 @@ add_action( 'after_setup_theme', function() {
 	 */
   add_theme_support( 'post-thumbnails' );
 });
-
-/**
- * Admin, Login Favicon
- */
-function favicon() {
-  echo '<link rel="icon" href="' . get_template_directory_uri() . '/dist/favicon.ico" />';
-}
-add_action( 'admin_head', 'favicon' );
-add_action( 'login_head', 'favicon' );
